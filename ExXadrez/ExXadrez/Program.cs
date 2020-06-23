@@ -9,11 +9,23 @@ namespace ExXadrez
     {
         static void Main(string[] args)
         {
-            PosicaoXadrez posicaoXadrez = new PosicaoXadrez('a', 1);
+            try
+            {
+                Tab_Class tab_Class = new Tab_Class(8, 8);
 
-            Console.WriteLine(posicaoXadrez);
+                tab_Class.ColocarPeca(new Torre(tab_Class, Tabuleiro.Enum.Cor.Preta), new Posicao(0, 0));
+                tab_Class.ColocarPeca(new Torre(tab_Class, Tabuleiro.Enum.Cor.Preta), new Posicao(1, 3));
+                tab_Class.ColocarPeca(new Rei(tab_Class, Tabuleiro.Enum.Cor.Preta), new Posicao(2, 4));
 
-            Console.WriteLine(posicaoXadrez.ToPosicao());
+
+                tab_Class.ColocarPeca(new Torre(tab_Class, Tabuleiro.Enum.Cor.Branca), new Posicao(3, 5));
+
+                Tela.imprimirTabuleiro(tab_Class);
+            }
+            catch (TabuleiroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
