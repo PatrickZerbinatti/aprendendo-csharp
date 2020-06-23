@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using ExXadrez.Tabuleiro;
 using ExXadrez.Tabuleiro.Except;
 using ExXadrez.Xadrez;
@@ -11,16 +12,22 @@ namespace ExXadrez
         {
             try
             {
-                Tab_Class tab_Class = new Tab_Class(8, 8);
+                PartidaDeXadrez partidaDeXadrez = new PartidaDeXadrez();
 
-                tab_Class.ColocarPeca(new Torre(tab_Class, Tabuleiro.Enum.Cor.Preta), new Posicao(0, 0));
-                tab_Class.ColocarPeca(new Torre(tab_Class, Tabuleiro.Enum.Cor.Preta), new Posicao(1, 3));
-                tab_Class.ColocarPeca(new Rei(tab_Class, Tabuleiro.Enum.Cor.Preta), new Posicao(2, 4));
+                while (!partidaDeXadrez.Terminada)
+                {
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partidaDeXadrez.Tab);
 
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
 
-                tab_Class.ColocarPeca(new Torre(tab_Class, Tabuleiro.Enum.Cor.Branca), new Posicao(3, 5));
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
 
-                Tela.imprimirTabuleiro(tab_Class);
+                    partidaDeXadrez.ExecutarMovimento(origem, destino);
+                }
+
             }
             catch (TabuleiroException e)
             {

@@ -7,7 +7,7 @@ namespace ExXadrez.Tabuleiro
     {
         public Posicao Posicao { get; set; }
         public Cor Cor { get; protected set; }
-        public int qteMovimentos { get; protected set; }
+        public int QteMovimentos { get; protected set; }
         public Tab_Class Tab { get; set; }
 
         public Peca(Tab_Class tab, Cor cor)
@@ -15,7 +15,10 @@ namespace ExXadrez.Tabuleiro
             Cor = cor;
             Tab = tab;
         }
-
+        public void IncrementarMovimentos()
+        {
+            QteMovimentos++;
+        }
 
     }
 }

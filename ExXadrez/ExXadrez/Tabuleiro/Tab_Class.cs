@@ -7,24 +7,24 @@ namespace ExXadrez.Tabuleiro
     {
         public int Linha { get; set; }
         public int Coluna { get; set; }
-        private Peca[,] pecas;
+        private Peca[,] Pecas;
 
         public Tab_Class(int linha, int colunas)
         {
             Linha = linha;
             Coluna = colunas;
 
-            pecas = new Peca[linha, colunas];
+            Pecas = new Peca[linha, colunas];
         }
 
         public Peca Peca(int linha, int coluna)
         {
-            return pecas[linha, coluna];
+            return Pecas[linha, coluna];
         }
 
         public Peca Peca(Posicao posicao)
         {
-            return pecas[posicao.Linha, posicao.Coluna];
+            return Pecas[posicao.Linha, posicao.Coluna];
         }
 
         public bool ExistePeca(Posicao posicao)
@@ -38,8 +38,23 @@ namespace ExXadrez.Tabuleiro
             {
                 throw new TabuleiroException("Ja existe uma peça nesta posição");
             }
-            pecas[posicao.Linha, posicao.Coluna] = peca;
+            Pecas[posicao.Linha, posicao.Coluna] = peca;
             peca.Posicao = posicao;
+        }
+
+        public Peca RetirarPeca(Posicao posicao)
+        {
+            if (Peca(posicao) == null)
+            {
+                return null;
+            }
+            else
+            {
+                Peca aux = Peca(posicao);
+                aux.Posicao = null;
+                Pecas[posicao.Linha, posicao.Coluna] = null;
+                return aux;
+            }
         }
         public bool PosicaoValida(Posicao posicao)
         {
