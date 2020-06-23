@@ -1,5 +1,5 @@
 ﻿
-namespace Tabuleiro
+namespace ExXadrez.Tabuleiro
 {
     class Posicao
     {
