@@ -3,7 +3,7 @@ using ExXadrez.Tabuleiro.Enum;
 
 namespace ExXadrez.Tabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         public Posicao Posicao { get; set; }
         public Cor Cor { get; protected set; }
@@ -19,6 +19,7 @@ namespace ExXadrez.Tabuleiro
         {
             QteMovimentos++;
         }
+        public abstract bool[,] MovimentosPossiveis();
 
     }
 }

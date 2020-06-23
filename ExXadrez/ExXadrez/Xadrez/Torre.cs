@@ -13,5 +13,12 @@ namespace ExXadrez.Xadrez
         {
             return "T";
         }
+
+        private bool PodeMover(Posicao posicao)
+        {
+            Peca peca = Tab.Peca(posicao);
+
+            return peca == null || peca.Cor != Cor;
+        }
     }
 }

@@ -12,6 +12,12 @@ namespace ExXadrez.Tabuleiro
             Coluna = coluna;
         }
 
+        public void Definirvalor(int linha, int coluna)
+        {
+            Linha = linha;
+            Coluna = coluna;
+        }
+
         public override string ToString()
         {
             return Linha
